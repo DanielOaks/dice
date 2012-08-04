@@ -17,6 +17,8 @@ body {
 #footer {
     display: inline-block;
     margin: 1em 0 0;
+}
+#footer a {
     color: #00b;
     text-decoration: none;
 }
