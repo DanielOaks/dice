@@ -1,6 +1,7 @@
 $(document).ready(function() {
 	var prng = uheprng();
 	prng.initState();
+	prng.addEntropy();
 
 	var expression_box = $('#expression_box');
 	var content = $('#resultant');
