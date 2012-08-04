@@ -45,7 +45,7 @@ $(document).ready(function() {
 	});
 
 	// dice recalculate
-	$(document).on('click', recalculate_button, calculate_dice);
+	$(document).on('click', '#recalculate', calculate_dice);
 
 	// expression box change
 	$('#expression_box').change(function () {
@@ -64,6 +64,7 @@ $(document).ready(function() {
 		var input_line = expression_box.val();
 		var plus_split = input_line.split('+');
 
+		var output_line = '';
 		var output_dice = [];
 
 		for (var split in plus_split) {
@@ -80,6 +81,7 @@ $(document).ready(function() {
 				}
 			}
 		}
+
 		var result = 0;
 
 		for (var die in output_dice) {
@@ -87,12 +89,35 @@ $(document).ready(function() {
 			output_dice[die] = output_dice[die].substr(1);
 			var die_result;
 
+			// so the dice thingy below works properly
 			if (output_dice[die][0] == 'd') {
-				output_dice[die] = output_dice[die].substr(1);
-				die_result = prng(output_dice[die]);
+				output_dice[die] = '1' + output_dice[die];
 			}
-			else {
+
+			if (output_dice[die].indexOf('d') != -1) { // if dice string contains d
+				var dice_num = output_dice[die].substr(0, output_dice[die].indexOf('d'));
+				var dice_size = output_dice[die].substr(output_dice[die].indexOf('d')+1);
+				
+				var current_die = 0;
+				die_result = 0;
+
+				if (output_line.substr(output_line.length - 2) != '  ') {
+					output_line += ' ';
+				}
+
+				// add result of each individual dice
+				for (var i=0;i < dice_num;i++) {
+					current_die = prng(dice_size);
+					die_result += current_die;
+
+					output_line += sign + ' ' + current_die + ' '
+				}
+				output_line += ' '
+			}
+			else { // not a dice, just plain number
 				die_result = output_dice[die];
+
+				output_line += sign + ' ' + output_dice[die] + ' '
 			}
 
 			if (sign == '-') {
@@ -103,7 +128,12 @@ $(document).ready(function() {
 			}
 		}
 
-		content.text(result);
+		// remove + from front of line
+		if (output_line.substr(0, 3) == ' + ') {
+			output_line = output_line.substr(3);
+		}
+
+		content.text(output_line);
 		$('#resultant_title').text(': ' + result);
 	}
 });
