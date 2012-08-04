@@ -60,6 +60,12 @@ body {
     margin: 0;
 }
 
+#button-pad {
+    display: inline-block;
+    float: right;
+    margin: 1em 0 0;
+    visibility: hidden;
+}
 #recalculate {
     display: inline-block;
     float: right;
