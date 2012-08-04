@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+
+<html lang="en">
+	<head>
+		<title>Dice Roller</title>
+
+        <!-- Style -->
+        <link rel="stylesheet" type="text/css" href="cl/fonts/delicious/stylesheet.css" />
+        <link rel="stylesheet" type="text/css" href="cl/css/clear.css" />
+        <link rel="stylesheet" type="text/css" href="cl/css/default.css" />
+
+        <!-- Script -->
+        <script type="text/javascript" src="cl/js/jquery-1.7.2.min.js"></script>
+        <script type="text/javascript" src="cl/js/uheprng.js"></script>
+        <script type="text/javascript" src="cl/js/dice.js"></script>
+
+        <!-- App -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=2.0, user-scalable=yes" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+	</head>
+	<body>
+		<div id="wrapper">
+			<a id="header">Dice Roller</a>
+
+			<a id="dice" class="head">Dice</a>
+			<div id="dice_content" class="content">
+				<a class="die" dice="d4">d4</a>
+				<a class="die" dice="d6">d6</a>
+				<a class="die" dice="d8">d8</a>
+				<a class="die" dice="d10">d10</a>
+				<a class="die" dice="d12">d12</a>
+				<a class="die" dice="d20">d20</a>
+			</div>
+
+			<a id="expression" class="head">
+				Expression
+				<span id="expression_title"></span>
+			</a>
+			<div id="expression_content" class="content">
+				<textarea id="expression_box"></textarea>
+			</div>
+
+			<a id="result" class="head">
+				Result
+				<span id="resultant_title"></span>
+			</a>
+			<div id="result_content" class="content">
+				<div id="resultant"></div>
+			</div>
+
+			<a id="footer" href="http://danneh.net">Danneh</a>
+			<input id="recalculate" type="button" value="Recalculate"  />
+			<input id="clear" type="button" value="Clear"  />
+		</div>
+	</body>
+</html>
