@@ -58,6 +58,7 @@ $(document).ready(function() {
 	$(document).on('click', '#clear', function () {
 		expression_box.val('');
 		$('#expression_title').text('');
+		calculate_dice();
 	});
 
 	// dice calculator
